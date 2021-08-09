@@ -1,0 +1,38 @@
+<h1>Accessible Modal Component</h1>
+
+<p>Welcome to the accessible modal testing page!</p>
+<button class="button button-primary" type="button" (click)="show()">Show modal</button>
+
+<ng-template #modal>
+  <form [formGroup]="form" (ngSubmit)="submit()">
+    <div class="form-field">
+      <label for="firstName">First name</label>
+      <input id="firstName" formControlName="firstName" [attr.aria-invalid]="isRequiredValid('firstName')" aria-describedby="firstname-error">
+      <span id="firstName-error" class="validation-error" *ngIf="isRequiredValid('firstName')">First name is required</span>
+    </div>
+
+    <div class="form-field">
+      <label for="surname">Surname</label>
+      <input id="surname" formControlName="surname" [attr.aria-invalid]="isRequiredValid('surname')" aria-describedby="surname-error">
+      <span id="surname-error" class="validation-error" *ngIf="isRequiredValid('surname')">Surname is required</span>
+    </div>
+
+    <div class="form-field">
+      <label for="age">Age</label>
+      <input id="age" formControlName="age" [attr.aria-invalid]="isRequiredValid('age')" aria-describedby="age-error">
+      <span id="age-error" class="validation-error" *ngIf="isRequiredValid('age')">Age is required</span>
+    </div>
+
+    <div class="form-check">
+      <label class="form-check-label" for="newsletter">Subscribe to news letter</label>
+      <input type="checkbox" id="newsletter" class="form-check-input" (change)="info = !info" formControlName="info">
+      <p *ngIf="info" [@fade] class="text-muted">You will recive newsletter in your e-mail box</p>
+    </div>
+
+    <div class="button-group">
+      <button class="button button-primary" type="submit" [attr.aria-disabled]="form.invalid">Submit</button>
+      <button class="button button-secondary" type="button" (click)="modalRef.close()">Cancel
+      </button>
+    </div>
+  </form>
+</ng-template>
