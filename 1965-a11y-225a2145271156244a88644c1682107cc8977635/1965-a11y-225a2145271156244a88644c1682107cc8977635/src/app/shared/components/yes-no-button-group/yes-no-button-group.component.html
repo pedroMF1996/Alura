@@ -1,5 +1,0 @@
-<div appKm class="button-group" role="radiogroup" [attr.aria-labelledby]="id">
-  <label [attr.id]="id" class="label">{{label}}</label>
-  <button appKmItem (focused)="activate(options.YES)" [attr.disabled]="disabled ? disabled : null" [attr.tabindex]="isChecked(options.YES) || value === null? 0 : -1" role="radio" [attr.aria-checked]="isChecked(options.YES)" type="button" class="button btn-yes" [ngClass]="{'button-pressed':isChecked(options.YES)}" (click)="activate(options.YES)">Yes</button>
-  <button appKmItem (focused)="activate(options.NO)" [attr.disabled]="disabled ? disabled : null" [attr.tabindex]="isChecked(options.NO)? 0 : -1" role="radio" [attr.aria-checked]="isChecked(options.NO)" type="button" class="button btn-no" [ngClass]="{'button-pressed':isChecked(options.NO)}" (click)="activate(options.NO)">No</button>
-</div>
